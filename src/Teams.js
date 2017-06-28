@@ -35,7 +35,7 @@ class TeamsTable extends Component {
                   </span>
                  </h3>)
     } else {
-      return ( <table className='table table-striped' >
+      return ( <table className='table table-hover' >
             <thead>
              <tr>
                 <th>Rank</th>
