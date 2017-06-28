@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import data from './data/table.json';
 
 const { Chart, Bars, Dots, Labels, Ticks, Layer, Animate } = require('rumble-charts');
 
@@ -10,17 +11,17 @@ class TeamsTable extends Component {
   }
 
   componentDidMount() {
-    fetch('/teams').then(res => res.json())
-                   .then(data => this.setState({teams: data}))
-                   .then(state => this.displayGraph(1));
+    setTimeout(()  => {
+    this.setState({teams: data});
 
+    }, 2000);
+  }
+
+  componentDidUpdate() {
+    this.displayGraph(0);
   }
 
   displayGraph(i){
-    console.log('display graph');
-    console.log(i);
-    console.log(this.state.teams[i]);
-
     const team = this.state.teams[i];
     ReactDOM.render(<TeamGraph data={team} />, document.getElementById('teamgraph'));
 
@@ -100,8 +101,7 @@ class TeamGraph extends Component {
   }
 
   render(){
-    const {rank, logo, team, points, played, win, draw, lost,
-            goalsFor, goalsAgainst, goalDifference} = this.state;
+    const {rank, logo, team, points, win, draw, lost, goalsFor } = this.state;
     const logo_path = "images/logos/" + logo + ".gif";
 
   const labels = ['rank', 'points', 'win', 'draw', 'lost', 'goals'];
