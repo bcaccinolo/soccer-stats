@@ -2,19 +2,23 @@
   "name": "client-react",
   "version": "0.1.0",
   "private": true,
+
+  "homepage" : "http://bcaccinolo.github.io/soccer-stats/",
+
   "dependencies": {
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "rumble-charts": "^1.4.1"
   },
   "devDependencies": {
-    "react-scripts": "1.0.7"
+    "react-scripts": "1.0.7",
+    "gh-pages": "^1.0.0"
   },
-  "proxy": "http://localhost:3001/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
+    "deploy" : "npm run build&&gh-pages -d build",
     "eject": "react-scripts eject"
   }
 }
